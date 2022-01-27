@@ -124,13 +124,14 @@ var signInWithRedirect = function() {
 var signInWithPopup = function() {
   window.open(getWidgetUrl(), 'Sign In', 'width=985,height=735');
 };
-
+// https://ticketsystem-71d2c.firebaseapp.com/__/auth/handler
 
 /**
  * Displays the UI for a signed in user.
  * @param {!firebase.User} user
  */
 var handleSignedInUser = function(user) {
+  console.log(user)
   document.getElementById('user-signed-in').style.display = 'block';
   document.getElementById('user-signed-out').style.display = 'none';
   document.getElementById('name').textContent = user.displayName;
@@ -251,11 +252,11 @@ var initApp = function() {
   document.getElementById('email-disableSignUp-status').addEventListener(
       'change', handleConfigChange);
   document.getElementById("email-disableSignUp-status").checked =
-      getDisableSignUpStatus();  
+      getDisableSignUpStatus();
   document.getElementById('admin-restricted-operation-status').addEventListener(
       'change', handleConfigChange);
   document.getElementById("admin-restricted-operation-status").checked =
-      getAdminRestrictedOperationStatus();  
+      getAdminRestrictedOperationStatus();
 };
 
 window.addEventListener('load', initApp);
